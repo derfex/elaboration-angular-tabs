@@ -16,9 +16,9 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'elaboration-angular-tabs'`, () => {
+  it('should have a `tabs` property to equal `[1, 2]`', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('elaboration-angular-tabs');
+    expect(app.tabs).toEqual([1, 2]);
   });
 });
