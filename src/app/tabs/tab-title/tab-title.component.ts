@@ -8,7 +8,7 @@ import {
 @Component({
   selector: 'tab-title',
   templateUrl: './tab-title.component.html',
-  styleUrls: ['./tab-title.component.sass'],
+  styleUrls: ['./tab-title.component.css'],
 })
 export class TabTitleComponent {
   constructor(

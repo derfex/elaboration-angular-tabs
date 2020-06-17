@@ -25,7 +25,7 @@ import { TabComponent } from './tabs/tab/tab.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass'],
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
   public activeTab: TabComponent = null;

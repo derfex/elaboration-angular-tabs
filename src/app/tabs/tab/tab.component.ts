@@ -9,7 +9,7 @@ import {
 @Component({
   selector: 'tab',
   templateUrl: './tab.component.html',
-  styleUrls: ['./tab.component.sass'],
+  styleUrls: ['./tab.component.css'],
 })
 export class TabComponent {
   @Input()

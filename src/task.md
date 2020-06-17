@@ -27,7 +27,11 @@
 * [x] По клику на `<tab-title>` происходит активация таба.
 * [x] Разметка осталась без изменений даже для бонусного задания.
 
+## Результат
+[Посмотреть результат на Stackblitz][Stackblitz-result].
+
 
 [app-template]: https://stackblitz.com/edit/vim8-1-tabs-template?file=app%2Fapp.component.html
 [source]: https://hackmd.io/@ui1a7-aTSlGyz-5IbnhhPw/Hkbe5Kw7E
 [Stackblitz]: https://stackblitz.com/
+[Stackblitz-result]: https://stackblitz.com/github/derfex/elaboration-angular-tabs/tree/stackblitz
