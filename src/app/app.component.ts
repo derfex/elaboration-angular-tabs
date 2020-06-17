@@ -13,6 +13,10 @@ import {
 import {
   Subscription,
 } from 'rxjs';
+import {
+  filter,
+  map,
+} from 'rxjs/operators';
 
 import { TabComponent } from './tabs/tab/tab.component';
 
@@ -24,7 +28,7 @@ import { TabComponent } from './tabs/tab/tab.component';
   styleUrls: ['./app.component.sass'],
 })
 export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
-  public activeTab: TabComponent;
+  public activeTab: TabComponent = null;
   public tabs: number[] = [1, 2];
 
   @HostListener('click', ['$event.target'])
@@ -66,6 +70,25 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
     // Activate the first tab.
     this.activate.emit(1);
     this.cdr.detectChanges();
+
+    // Activate the first tab when there is no active tab.
+    this.subscriptions.add(
+      this.tabComponents.changes
+        .pipe(
+          filter((changes: QueryList<TabComponent>) => {
+            return !changes.find((tab: TabComponent) => tab === this.activeTab);
+          }),
+          map((changes: QueryList<TabComponent>) => {
+            return changes.first || null;
+          }),
+        )
+        .subscribe((tab: TabComponent | null) => {
+          if (tab) {
+            tab.active = true;
+          }
+          this.activeTab = tab;
+        }),
+    );
   }
 
   public ngOnDestroy(): void {
