@@ -1,5 +1,7 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   HostListener,
@@ -21,7 +23,7 @@ import { TabComponent } from './tabs/tab/tab.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass'],
 })
-export class AppComponent implements OnDestroy, OnInit {
+export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
   public activeTab: TabComponent;
   public tabs: number[] = [1, 2];
 
@@ -42,6 +44,11 @@ export class AppComponent implements OnDestroy, OnInit {
   private subscriptions: Subscription = new Subscription();
 
 
+  constructor(
+    private readonly cdr: ChangeDetectorRef,
+  ) {
+  }
+
   public ngOnInit(): void {
     this.subscriptions.add(
       this.activate.subscribe((tabNumber: number) => {
@@ -53,6 +60,12 @@ export class AppComponent implements OnDestroy, OnInit {
         this.activeTab = tab;
       }),
     );
+  }
+
+  public ngAfterViewInit(): void {
+    // Activate the first tab.
+    this.activate.emit(1);
+    this.cdr.detectChanges();
   }
 
   public ngOnDestroy(): void {
