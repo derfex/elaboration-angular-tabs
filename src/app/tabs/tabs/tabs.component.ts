@@ -8,7 +8,7 @@ import {
 @Component({
   selector: 'tabs',
   templateUrl: './tabs.component.html',
-  styleUrls: ['./tabs.component.sass'],
+  styleUrls: ['./tabs.component.css'],
 })
 export class TabsComponent {
   constructor(
